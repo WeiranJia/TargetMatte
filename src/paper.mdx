@@ -1,0 +1,89 @@
+---
+# This title is used for the browser tab and the link-preview card (see the
+# "description" and "thumbnail" keys below). The title displayed at the top of
+# the page is set separately, on the <Header> component in the body.
+title: Academic Project Page Template
+
+# The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
+theme: device
+
+# This is the icon that appears in the user's browser tab. To customize, change the favicon.svg file in /public/, or add your own file to /public/ and change the filename here.
+favicon: favicon.svg
+
+# These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail. After you publish your page, you can double check that these previews look right using [this tool](https://linkpreview.xyz/)
+description: Simple project page template for your research paper, built with Astro and Tailwind
+thumbnail: screenshot-light.png
+---
+
+import Header from "./components/Header.astro";
+import Video from "./components/Video.astro";
+import HighlightedSection from "./components/HighlightedSection.astro";
+import SmallCaps from "./components/SmallCaps.astro";
+import Figure from "./components/Figure.astro";
+import Picture from "./components/Picture.astro";
+import ModelViewer from "./components/ModelViewer.astro"
+import TwoColumns from "./components/TwoColumns.astro";
+import YouTubeVideo from "./components/YouTubeVideo.astro";
+import Carousel from "./components/Carousel.astro";
+import CarouselSlide from "./components/CarouselSlide.astro";
+import Wide from "./components/Wide.astro";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
+import { Comparison } from "./components/Comparison.tsx";
+
+import outside from "./assets/demo.mp4";
+import dogsDiffc from "./assets/framework.png"
+import dogsTrue from "./assets/teaser.png"
+import dogsMsillm from "@/assets/dogs-msillm.jpg"
+
+<Header
+  title="Bridging Semantic Grounding and Structural Precision for Portrait Video Matting"
+  authors={[
+    {
+      name: "Weiran Jia",
+      institution: "Zhejiang University",
+    },
+    { name: "Yunlong Yu", institution: "Zhejiang University", notes: ["†"] },
+    { name: "Ziqian Lu", institution: "Zhejiang Sci-Tech University" },
+    { name: "Zhao Wang", institution: "Zhejiang University" },
+    { name: "Jungong Han", institution: "Tsinghua University" },
+  ]}
+  notes={[
+    { symbol: "†", text: "Corresponding Author" },
+  ]}
+>
+  {/*
+    Optionally place a cover image or video behind the header. Import the
+    asset (from src/assets/, so images are optimized) and pass it through the
+    "background" slot using the Picture or Video component:
+
+      <Picture slot="background" src={cover} alt="" />
+      <Video slot="background" src={outside} controls={false} />
+  */}
+  <Picture slot="background" src={dogsTrue} alt="" priority />
+</Header>
+
+<HighlightedSection>
+
+## Abstract
+
+Video portrait matting aims to recover fine-grained alpha mattes while preserving temporal consistency across video frames. Recent mask-guided approaches have achieved promising results by leveraging segmentation masks to specify target subjects. However, extending these approaches to natural-language target specification introduces a fundamental discrepancy between semantic understanding and matting-oriented guidance. To address this limitation, we propose TargetMatte, a language-guided interface that bridges the semantic-to-matting prior gap by establishing semantic-to-spatial correspondence and refining target masks to meet the structural requirements of video matting. TargetMatte first exploits multimodal large language model reasoning to interpret appearance, actions, and spatial relationships, and incorporates portrait-domain adaptation to improve target identification and region-level accuracy. Complementing semantic grounding, a matting-oriented prior refinement mechanism employs boundary-aware correction to improve contour precision. The resulting guidance masks can be directly integrated into existing video matting models without modification. Extensive experiments on synthetic and real-world benchmarks demonstrate consistent improvements in matting quality across multiple video matting backbones, validating the effectiveness and generality of TargetMatte.
+
+</HighlightedSection>
+
+## Framework
+
+<Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
+
+## Demo
+
+<Video src={outside} />
+
+## BibTeX citation
+
+```bibtex
+@misc{jia2026targetmatte,
+  author = "{Weiran Jia, Yunlong Yu, Ziqian Lu, Zhao Wang, and Jungong Han}",
+  title = "Bridging Semantic Grounding and Structural Precision for Portrait Video Matting",
+  year = "2026",
+}
+```
