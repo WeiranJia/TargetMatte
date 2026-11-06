@@ -2,7 +2,7 @@
 # This title is used for the browser tab and the link-preview card (see the
 # "description" and "thumbnail" keys below). The title displayed at the top of
 # the page is set separately, on the <Header> component in the body.
-title: Academic Project Page Template
+title: Bridging Semantic Grounding and Structural Precision for Portrait Video Matting
 
 # The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
 theme: device
@@ -32,7 +32,8 @@ import { Comparison } from "./components/Comparison.tsx";
 
 import outside from "./assets/demo.mp4";
 import dogsDiffc from "./assets/framework.png"
-import dogsTrue from "./assets/teaser.png"
+import dogsTrue from "./assets/github.png"
+import intro from "./assets/intro.png"
 import dogsMsillm from "@/assets/dogs-msillm.jpg"
 
 <Header
@@ -70,9 +71,25 @@ Video portrait matting aims to recover fine-grained alpha mattes while preservin
 
 </HighlightedSection>
 
-## Framework
+## Introduction
+
+<Picture src={intro} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
+
+<div className="text-justify">
+
+Video portrait matting aims to extract high-quality foreground alpha mattes while preserving fine-grained structures such as hair strands, clothing edges, and motion blur. Although recent mask-guided methods have achieved promising results, their performance heavily depends on the quality of target masks. In complex multi-person scenes, specifying the intended person through natural language is more intuitive than conventional spatial prompts. However, translating language descriptions into reliable matting guidance remains challenging. General-purpose segmentation models may misinterpret semantic descriptions, omit target regions, or include irrelevant content. Moreover, even correctly localized masks may lack the boundary precision required for high-quality matting.
+
+</div>
+
+## Method
 
 <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
+
+<div className="text-justify">
+
+TargetMatte consists of two complementary stages: semantic-to-spatial target grounding and matting-oriented structural refinement. Given a video frame and a natural-language instruction, an MLLM first interprets the description and identifies the intended portrait, while SAM2 generates the initial target mask. Portrait-domain adaptation further improves target identification and region-level accuracy, reducing missing target regions and the inclusion of irrelevant content. Subsequently, a residual-based refinement network with boundary-aware weighting corrects local contour errors, producing structurally precise target masks. Finally, the refined masks are provided as external guidance to existing mask-guided video matting models for alpha estimation, without modifying their architectures or parameters.
+
+</div>
 
 ## Demo
 
@@ -82,8 +99,8 @@ Video portrait matting aims to recover fine-grained alpha mattes while preservin
 
 ```bibtex
 @misc{jia2026targetmatte,
-  author = "{Weiran Jia, Yunlong Yu, Ziqian Lu, Zhao Wang, and Jungong Han}",
-  title = "Bridging Semantic Grounding and Structural Precision for Portrait Video Matting",
-  year = "2026",
+  title = {Bridging Semantic Grounding and Structural Precision for Portrait Video Matting},
+  author = {Weiran Jia, Yunlong Yu, Ziqian Lu, Zhao Wang, and Jungong Han},
+  year = {2026}
 }
 ```
