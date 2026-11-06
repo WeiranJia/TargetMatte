@@ -4,4 +4,4 @@ Video portrait matting aims to estimate high-fidelity alpha mattes while preserv
 
 TargetMatte addresses the gap between semantic target understanding and matting-oriented visual guidance. By combining multimodal semantic reasoning, portrait-domain adaptation, and matting-oriented structural refinement, TargetMatte converts natural-language descriptions into reliable spatial priors for downstream video matting.
 
-You can see the triplet samples in the triplet_sample folder and the demo on https://weiranjia.github.io/TargetMatte/
+You can see the triplet samples in the triplet_sample folder and the project on https://weiranjia.github.io/TargetMatte/
